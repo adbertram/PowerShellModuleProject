@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>PowerShellModuleProject</id>
+        <version>$VERSIONHERE$</version>
+        <authors>CloudWay, Inc</authors>
+        <description>My awesome PowerShell module</description>
+    </metadata>
+</package>
