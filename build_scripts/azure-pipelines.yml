@@ -23,7 +23,7 @@ stages:
     - task: NuGetCommand@2
       inputs:
         command: 'pack'
-        packagesToPack: '$(System.DefaultWorkingDirectory)/Modules/PowerShellModuleProject.nuspec'
+        packagesToPack: '$(System.DefaultWorkingDirectory)/PowerShellModuleProject.nuspec'
         versioningScheme: byEnvVar
         versionEnvVar: buildVer
         buildProperties: 'VERSIONHERE=$(buildVer)'
