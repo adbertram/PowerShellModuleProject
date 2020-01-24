@@ -20,32 +20,19 @@ stages:
     - task: PowerShell@2
       inputs:
         filePath: '$(System.DefaultWorkingDirectory)/build_scripts/build.ps1'
-    - task: NuGetCommand@2
-      inputs:
-        command: 'pack'
-        packagesToPack: '$(System.DefaultWorkingDirectory)/PowerShellModuleProject.nuspec'
-        versioningScheme: byEnvVar
-        versionEnvVar: buildVer
-        buildProperties: 'VERSIONHERE=$(buildVer)'
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'NuGetPackage'
-        publishLocation: 'Container'
 - stage: Test
-- stage: Deploy
   jobs:
-  - job: Deploy
+  - job: Test
     steps:
-      - task: DownloadPipelineArtifact@2
-        inputs:
-          buildType: 'current'
-          artifactName: 'NuGetPackage'
-          itemPattern: '**'
-          targetPath: '$(Pipeline.Workspace)'
-      - task: NuGetCommand@2
-        inputs:
-          command: 'push'
-          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
-          nuGetFeedType: 'internal'
-          publishVstsFeed: 'adbertram'
+    - task: Pester@0
+      inputs:
+        scriptFolder: "@{Path='$(System.DefaultWorkingDirectory)/PowerShellModuleProject.tests.ps1'"
+        resultsFile: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.tests.XML"
+        usePSCore: true
+        run32Bit: False
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: "NUnit"
+        testResultsFiles: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.tests.XML"
+        failTaskOnFailedTests: true
+- stage: Deploy
