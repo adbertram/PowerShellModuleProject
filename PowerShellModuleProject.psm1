@@ -14,8 +14,7 @@ foreach ($import in @($Public + $Private)) {
     }
 }
 
-if ($Public) {
-    foreach ($file in $Public) {
-        Export-ModuleMember -Function $file.BaseName
-    }
+## Export all of the public functions making them available to the user
+foreach ($file in $Public) {
+    Export-ModuleMember -Function $file.BaseName
 }

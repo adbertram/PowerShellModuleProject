@@ -16,4 +16,4 @@ if ((Test-Path -Path $publicFuncFolderPath) -and ($publicFunctionNames = Get-Chi
 }
 ## Add all public functions to FunctionsToExport attribute
 $manifestContent = $manifestContent -replace "'<FunctionsToExport>'", $funcStrings
-$manifestContent | Set-Content -Path $manifestFile.FullName
+$manifestContent | Set-Content -Path $manifestPath
