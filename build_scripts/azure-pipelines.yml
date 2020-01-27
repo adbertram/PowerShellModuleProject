@@ -26,13 +26,13 @@ stages:
     steps:
     - task: Pester@0
       inputs:
-        scriptFolder: "@{Path='$(System.DefaultWorkingDirectory)/PowerShellModuleProject.tests.ps1'"
-        resultsFile: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.tests.XML"
+        scriptFolder: "@{Path='$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.ps1'"
+        resultsFile: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.XML"
         usePSCore: true
         run32Bit: False
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: "NUnit"
-        testResultsFiles: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.tests.XML"
+        testResultsFiles: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.XML"
         failTaskOnFailedTests: true
 - stage: Deploy
