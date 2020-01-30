@@ -9,7 +9,7 @@ describe 'Module-level tests' {
     }
 
     it 'passes all default PSScriptAnalyzer rules' {
-        Invoke-PSScriptAnalyzer -Path "$PSScriptRoot\PowerShellModuleProject.psm1" | should -BeNullOrEmpty
+        Invoke-ScriptAnalyzer -Path "$PSScriptRoot\PowerShellModuleProject.psm1" | should -BeNullOrEmpty
     }
 
 }
