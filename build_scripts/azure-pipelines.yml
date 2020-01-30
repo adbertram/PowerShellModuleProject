@@ -21,8 +21,6 @@ stages:
       inputs:
         filePath: '$(System.DefaultWorkingDirectory)/build_scripts/install.ps1'
 - stage: Build
-  dependsOn:
-  condition: succeeded()
   jobs:
   - job: Build
     steps:
@@ -30,8 +28,6 @@ stages:
       inputs:
         filePath: '$(System.DefaultWorkingDirectory)/build_scripts/build.ps1'
 - stage: Test
-  dependsOn:
-  condition: succeeded()
   jobs:
   - job: Test
     steps:
@@ -47,5 +43,3 @@ stages:
         testResultsFiles: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.XML"
         failTaskOnFailedTests: true
 - stage: Deploy
-  dependsOn:
-  condition: succeeded()
