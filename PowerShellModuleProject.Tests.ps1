@@ -1,4 +1,4 @@
-Import-Module -Name PSScriptAnalyzer
+Install-Module -Name PSScriptAnalyzer
 
 describe 'Module-level tests' {
 
