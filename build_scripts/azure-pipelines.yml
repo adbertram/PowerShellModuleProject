@@ -35,6 +35,3 @@ stages:
         testResultsFormat: "NUnit"
         testResultsFiles: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.XML"
         failTaskOnFailedTests: true
-- stage: Deploy
-  jobs:
-  - deployment: Deploy
