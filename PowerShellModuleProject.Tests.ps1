@@ -1,3 +1,5 @@
+Import-Module -Name PSScriptAnalyzer
+
 describe 'Module-level tests' {
 
     it 'the module imports successfully' {
