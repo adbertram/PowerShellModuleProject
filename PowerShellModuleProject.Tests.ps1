@@ -8,4 +8,8 @@ describe 'Module-level tests' {
         Test-Path "$PSScriptRoot\PowerShellModuleProject.psd1" | should -Be $true
     }
 
+    it 'passes all default PSScriptAnalyzer rules' {
+        Invoke-PSScriptAnalyzer -Path "$PSScriptRoot\PowerShellModuleProject.psm1" | should -BeNullOrEmpty
+    }
+
 }

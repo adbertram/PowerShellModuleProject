@@ -13,6 +13,13 @@ pool:
   vmImage: "ubuntu-latest"
 
 stages:
+- stage: Install
+  jobs:
+  - job: Install
+    steps:
+    - task: PowerShell@2
+      inputs:
+        filePath: '$(System.DefaultWorkingDirectory)/build_scripts/install.ps1'
 - stage: Build
   jobs:
   - job: Build
