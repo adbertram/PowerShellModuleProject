@@ -3,7 +3,7 @@
     <metadata>
         <id>PowerShellModuleProject</id>
         <version>$VERSIONHERE$</version>
-        <authors>CloudWay, Inc</authors>
+        <authors>Adam Bertram</authors>
         <description>My awesome PowerShell module</description>
     </metadata>
 </package>

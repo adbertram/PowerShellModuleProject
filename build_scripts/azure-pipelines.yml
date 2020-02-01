@@ -35,3 +35,19 @@ stages:
         testResultsFormat: "NUnit"
         testResultsFiles: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.XML"
         failTaskOnFailedTests: true
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    steps:
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          buildType: 'current'
+          artifactName: 'NuGetPackage'
+          itemPattern: '**'
+          targetPath: '$(Pipeline.Workspace)'
+      - task: NuGetCommand@2
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
+          nuGetFeedType: 'internal'
+          publishVstsFeed: 'adbertram'
