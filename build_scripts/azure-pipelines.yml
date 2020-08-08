@@ -38,7 +38,7 @@ stages:
     steps:
     - task: Pester@10 ## If a new version is out, you may have to increment this
       inputs:
-        scriptFolder: "@{Path='$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.ps1'"
+        scriptFolder: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.ps1"
         resultsFile: "$(System.DefaultWorkingDirectory)/PowerShellModuleProject.Tests.XML"
         usePSCore: true
         run32Bit: False
